@@ -1,0 +1,100 @@
+---
+// src/layouts/BaseLayout.astro
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://restaurantenuevamurallla.com';
+
+const schemaOrgData = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Restaurante Nueva Muralla",
+  "image": `${siteUrl}/images/restaurant.jpg`,
+  "telephone": "+34 918 14 05 49",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle Ejemplo, 123",
+    "addressLocality": "Madrid",
+    "postalCode": "28001",
+    "addressCountry": "ES"
+  },
+  "servesCuisine": "Chinese",
+  "priceRange": "$$",
+  "url": siteUrl,
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "12:00",
+      "closes": "16:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "19:00",
+      "closes": "23:30"
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={`${siteUrl}/images/og-image.jpg`}>
+  <meta property="og:url" content={siteUrl}>
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={`${siteUrl}/images/og-image.jpg`}>
+  
+  <!-- Preconnect to Google Maps -->
+  <link rel="preconnect" href="https://maps.googleapis.com">
+  <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
+  
+  <!-- Preload Critical Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Schema.org JSON-LD for Restaurant -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaOrgData)} />
+</head>
+<body>
+  <slot />
+</body>
+</html>

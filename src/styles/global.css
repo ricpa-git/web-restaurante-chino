@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #b91c1c;
+    --color-accent: #d4a017;
+    --color-dark: #0c0c0c;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark text-white font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  ::selection {
+    background-color: rgba(185, 28, 28, 0.4);
+    color: white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-light text-white font-semibold py-3 px-8 rounded transition-all duration-300;
+  }
+
+  .btn-accent {
+    @apply bg-accent hover:bg-accent-light text-dark font-semibold py-3 px-8 rounded transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply border-2 border-accent text-accent hover:bg-accent hover:text-dark font-semibold py-3 px-8 rounded transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white text-center;
+  }
+
+  .gold-divider {
+    @apply flex items-center justify-center gap-4 my-6;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    @apply h-px bg-accent/40 flex-1 max-w-[80px];
+  }
+
+  .product-card {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+}
+
+/* Category Filtering CSS */
+#categoria-entrantes,
+#categoria-sopas,
+#categoria-arroz-tallarines,
+#categoria-verduras,
+#categoria-gambas,
+#categoria-ternera,
+#categoria-cerdo,
+#categoria-pollo,
+#categoria-patos,
+#categoria-especiales,
+#categoria-postres {
+  position: absolute;
+  top: -120px;
+  visibility: hidden;
+}
+
+body:has(#categoria-entrantes:target) .product-card:not([data-category="entrantes"]),
+body:has(#categoria-sopas:target) .product-card:not([data-category="sopas"]),
+body:has(#categoria-arroz-tallarines:target) .product-card:not([data-category="arroz-tallarines"]),
+body:has(#categoria-verduras:target) .product-card:not([data-category="verduras"]),
+body:has(#categoria-gambas:target) .product-card:not([data-category="gambas"]),
+body:has(#categoria-ternera:target) .product-card:not([data-category="ternera"]),
+body:has(#categoria-cerdo:target) .product-card:not([data-category="cerdo"]),
+body:has(#categoria-pollo:target) .product-card:not([data-category="pollo"]),
+body:has(#categoria-patos:target) .product-card:not([data-category="patos"]),
+body:has(#categoria-especiales:target) .product-card:not([data-category="especiales"]),
+body:has(#categoria-postres:target) .product-card:not([data-category="postres"]) {
+  display: none;
+}
+
+body:has(#categoria-entrantes:target) .product-card[data-category="entrantes"],
+body:has(#categoria-sopas:target) .product-card[data-category="sopas"],
+body:has(#categoria-arroz-tallarines:target) .product-card[data-category="arroz-tallarines"],
+body:has(#categoria-verduras:target) .product-card[data-category="verduras"],
+body:has(#categoria-gambas:target) .product-card[data-category="gambas"],
+body:has(#categoria-ternera:target) .product-card[data-category="ternera"],
+body:has(#categoria-cerdo:target) .product-card[data-category="cerdo"],
+body:has(#categoria-pollo:target) .product-card[data-category="pollo"],
+body:has(#categoria-patos:target) .product-card[data-category="patos"],
+body:has(#categoria-especiales:target) .product-card[data-category="especiales"],
+body:has(#categoria-postres:target) .product-card[data-category="postres"] {
+  animation: cardIn 0.4s ease-out;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

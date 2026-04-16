@@ -1,0 +1,56 @@
+{
+  "name": "sistema-pedidos-nueva-muralla",
+  "version": "1.0.0",
+  "description": "Sistema de pedidos online para Restaurante Nueva Muralla",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "init-db": "node server/db/init.js",
+    "verify-images": "node scripts/verify-product-images.js",
+    "validate-browser": "node scripts/validate-cross-browser.js",
+    "validate-functionality": "node scripts/validate-functionality.js",
+    "tailwind:watch": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/output.css --watch",
+    "tailwind:build": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/output.css --minify",
+    "old:dev": "node server/server.js",
+    "test": "vitest",
+    "test:run": "vitest --run",
+    "test:ui": "vitest --ui"
+  },
+  "keywords": [
+    "restaurante",
+    "pedidos",
+    "online"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/react": "^3.6.3",
+    "@astrojs/tailwind": "^5.1.5",
+    "astro": "^5.18.1",
+    "better-sqlite3": "^11.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^6.0.1",
+    "jsdom": "^29.0.2",
+    "tailwindcss": "^3.4.19",
+    "terser": "^5.46.1",
+    "vitest": "^4.1.4"
+  }
+}

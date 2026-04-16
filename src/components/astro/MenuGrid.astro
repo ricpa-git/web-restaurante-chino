@@ -1,0 +1,39 @@
+---
+import ProductCard from './ProductCard.astro';
+import type { Product } from '../../types';
+
+interface Props {
+  products: Product[];
+}
+
+const { products } = Astro.props;
+---
+
+<div id="menu-grid" class="relative">
+  <!-- Hidden anchors for CSS filtering -->
+  <span id="categoria-entrantes"></span>
+  <span id="categoria-sopas"></span>
+  <span id="categoria-arroz-tallarines"></span>
+  <span id="categoria-verduras"></span>
+  <span id="categoria-gambas"></span>
+  <span id="categoria-ternera"></span>
+  <span id="categoria-cerdo"></span>
+  <span id="categoria-pollo"></span>
+  <span id="categoria-patos"></span>
+  <span id="categoria-especiales"></span>
+  <span id="categoria-postres"></span>
+
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
+      {products.filter(p => p.activo).map((product, index) => (
+        <ProductCard product={product} index={index} />
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  #menu-grid {
+    scroll-margin-top: 80px;
+  }
+</style>

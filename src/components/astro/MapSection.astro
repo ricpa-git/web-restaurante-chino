@@ -1,0 +1,49 @@
+---
+import { mapConfig } from '../../data/contact';
+---
+
+<section id="ubicacion" class="relative py-20 bg-dark-gray" aria-label="Ubicación del restaurante">
+  <div class="max-w-7xl mx-auto px-4">
+    <p class="text-accent/80 text-xs uppercase tracking-[0.3em] text-center mb-4 font-sans font-medium">Ubicación</p>
+    <h2 class="section-title mb-4">Encuéntranos</h2>
+    <div class="gold-divider mb-12">
+      <span class="text-accent text-xl font-serif">新</span>
+    </div>
+
+    <div class="max-w-5xl mx-auto">
+      <div class="relative w-full overflow-hidden border border-white/10" style="aspect-ratio: 16/9;">
+        <iframe
+          src={mapConfig.embedUrl}
+          width="100%"
+          height="100%"
+          style="border:0; position: absolute; top: 0; left: 0; filter: grayscale(0.3) contrast(1.1);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación del Restaurante Nueva Muralla"
+        ></iframe>
+        <noscript>
+          <div class="p-8 text-center">
+            <a href={mapConfig.placeUrl} target="_blank" rel="noopener noreferrer" class="btn-outline">
+              Ver ubicación en Google Maps
+            </a>
+          </div>
+        </noscript>
+      </div>
+
+      <div class="mt-6 text-center">
+        <a
+          href={mapConfig.placeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-accent/70 hover:text-accent text-sm transition-colors duration-300"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+          </svg>
+          Abrir en Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
